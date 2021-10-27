@@ -23,7 +23,7 @@ function App() {
         <Route exact path="/meals" component={Meals}/>
         <Route path="/meals/:id" render={(props) => <MealDetails {...props}/>}/>
         <Route exact path="/reservation/:id" render={(props) => <ReservationForm {...props}/>}/>
-        <Route exact path="/reviews/:id" render={(props) => <Reviews {...props}/>}/>
+        <Route path="/reviews/:id" render={(props) => <Reviews {...props}/>}/>
       </Switch>
       <Footer />
       </div>

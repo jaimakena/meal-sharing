@@ -43,7 +43,6 @@ async function performAction(request, response, action, validate=true){
 }
 async function performDBAction(request,action,idValue){
   let result;
-  console.log(action);
   switch (action) {
     case 'delete':
       await knex("review").where({ id: idValue }).del();
@@ -58,8 +57,7 @@ async function performDBAction(request,action,idValue){
       result='Review Created';
       break;
     case 'get':
-      console.log(idValue);
-      result = await knex("review").where({ id: idValue });
+      result = await knex("review").where({ meal_id: idValue });
       break;
     default:
       break;

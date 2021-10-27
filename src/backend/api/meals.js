@@ -88,7 +88,7 @@ async function performDBAction(request,action,idValue){
       result='Meal Created';
       break;
     case 'get':
-      result = await knex("meal").select("title");
+      result = await knex("meal").select("id","title","description");
       break;
     case 'getWithId':
       result = await knex("meal").where({ id: idValue });

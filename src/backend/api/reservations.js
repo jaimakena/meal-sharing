@@ -46,7 +46,6 @@ async function performAction(request, response, action, validate=true){
 }
 async function performDBAction(request,action,idValue){
   let result;
-  console.log(action);
   switch (action) {
     case 'delete':
       await knex("reservation").where({ id: idValue }).del();

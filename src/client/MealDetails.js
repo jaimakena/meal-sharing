@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
-import getMeals from "./CommonFunctions";
-import ReservationForm from "./ReservationForm";
+import {getMeals, getReservationCount} from "./Utils";
+import {NavLink} from "react-router-dom";
 
 function MealDetails(props) {
     const [mealDetails, setMealDetails] = React.useState([]);
@@ -11,65 +11,41 @@ function MealDetails(props) {
     }, []);
 
     return (
+        <section className="py-5 text-center container bg-light">
         <div> {
-            mealDetails.length > 0 ? <div>
-                <table>
-                    <tbody>
-                        <tr>
-                            <td className='bold'>Id</td>
-                            <td>{
-                                mealDetails[0].id
-                            }</td>
-                        </tr>
-                        <tr>
-                            <td className='bold'>Title</td>
-                            <td>{
-                                mealDetails[0].title
-                            }</td>
-                        </tr>
-                        <tr>
-                            <td className='bold'>Description</td>
-                            <td>{
-                                mealDetails[0].description
-                            }</td>
-                        </tr>
-                        <tr>
-                            <td className='bold'>Location</td>
-                            <td>{
-                                mealDetails[0].location
-                            }</td>
-                        </tr>
-                        <tr>
-                            <td className='bold'>Price</td>
-                            <td>{
-                                mealDetails[0].price
-                            }</td>
-                        </tr>
-                    </tbody>
-                </table>
-
+            mealDetails.length > 0 ? 
+            <div>
+            <h2 className="mt-4">Meal Details</h2>
+            <div className="row mb-3">
+                <div className="col-md-4 themed-grid-col">Meal Id</div>
+                <div className="col-md-8 themed-grid-col">{mealDetails[0].id}</div>
+            </div>
+            <div className="row mb-3">
+                <div className="col-md-4 themed-grid-col">Title</div>
+                <div className="col-md-8 themed-grid-col">{mealDetails[0].title}</div>
+            </div>
+            <div className="row mb-3">
+                <div className="col-md-4 themed-grid-col">Description</div>
+                <div className="col-md-8 themed-grid-col">{mealDetails[0].description}</div>
+            </div>
+            <div className="row mb-3">
+                <div className="col-md-4 themed-grid-col">Location</div>
+                <div className="col-md-8 themed-grid-col">{mealDetails[0].location}</div>
+            </div>
+            <div className="row mb-3">
+                <div className="col-md-4 themed-grid-col">Price</div>
+                <div className="col-md-8 themed-grid-col">{mealDetails[0].price}</div>
+            </div>
                 {
-                parseInt(mealDetails[0].max_reservations) > parseInt(reservationCount) ? <ReservationForm mealId={
-                    mealDetails[0].id
-                }/> : ''
+                parseInt(mealDetails[0].max_reservations) > parseInt(reservationCount) ? 
+                <NavLink activeClassName="active" to={`/reservation/${mealDetails[0].id}`}>
+                <button type="button" className="btn btn-sm btn-outline-secondary">
+                    Make a Reservation
+                </button>
+                </NavLink>: ''
             } </div> : <p>No Meal Details</p>
-        } </div>
+        } </div></section>
     );
 }
 
 export default MealDetails;
-
-function getReservationCount(id, setData) {
-    const uri = 'http://localhost:3000/api/reservations/count/' + id;
-    fetch(uri).then((response) => {
-        if (response.ok) {
-            return response.json();
-        } else {
-            throw new Error(response.status);
-        }
-    }).then((data) => {
-        if (data) {
-            setData(data[0].count);
-        }
-    });
-}

@@ -17,7 +17,7 @@ export function getMeals(searchText,setData) {
 } 
 
 export function getReservationCount(id, setData) {
-  const uri = 'http://localhost:3000/api/reservations/count/' + id;
+  const uri = '/api/reservations/count/' + id;
   fetch(uri).then((response) => {
       if (response.ok) {
           return response.json();
@@ -32,7 +32,7 @@ export function getReservationCount(id, setData) {
 }
 
 export function getReviews(id, setData) {
-  const uri = 'http://localhost:3000/api/reviews/' + id;
+  const uri = '/api/reviews/' + id;
   fetch(uri).then((response) => {
       if (response.ok) {
           return response.json();

@@ -6,7 +6,7 @@ function ReservationForm(props) {
     const [name, setName] = React.useState("");
     const [guests, setGuests] = React.useState(1);
     const handleSubmit = (event) => {
-        fetch('http://localhost:3000/api/reservations', {
+        fetch('/api/reservations', {
             method: 'post',
             headers: {
                 'Accept': 'application/json, text/plain, */*',

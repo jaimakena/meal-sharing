@@ -1,3 +1,57 @@
-* {
-    box-sizing: border-box;
+.paddingRight5{
+  padding-right: 5px;
 }
+.paddingLeft200{
+  padding-left: 200px;
+}
+
+  .homePageImage{
+    max-height: 100%;
+    max-width: 100%;
+  }
+
+  .mealImage{
+    min-height: 250px;
+    min-width: 290px;
+    max-height: 250px;
+    max-width: 290px;
+  }
+
+  /* css for form */
+  .container {
+    max-width: 960px;
+  }
+
+  /* css for grid */
+  .themed-grid-col {
+    padding-top: .75rem;
+    padding-bottom: .75rem;
+    background-color: rgba(86, 61, 124, .15);
+    border: 1px solid rgba(86, 61, 124, .2);
+  }
+  
+  .themed-container {
+    padding: .75rem;
+    margin-bottom: 1.5rem;
+    background-color: rgba(0, 123, 255, .15);
+    border: 1px solid rgba(0, 123, 255, .2);
+  }
+
+/* css for reviews */
+body {
+    background-color: #eee
+}
+
+.card {
+    border: none
+}
+
+.user-content p {
+    margin-top: 5px;
+    font-size: 12px
+}
+
+.ratings i {
+    color: blue
+}
+
